@@ -12,7 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("allTimeExpanses")
+
+@Document(collection ="allTimeExpanses")
 public class AllTimeExpanse {
     @Id
     private Integer id;
@@ -21,5 +22,4 @@ public class AllTimeExpanse {
     private Integer totalExpanseTillNow;
     private Integer totalInvestmentThisYear;
     private Integer totalSavingThisYear;
-
 }

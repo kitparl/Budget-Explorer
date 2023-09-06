@@ -13,7 +13,7 @@ import java.time.Year;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("yearlyExpanses")
+@Document(collection ="yearlyExpanses")
 public class YearlyExpanse {
     @Id
     private Year year;

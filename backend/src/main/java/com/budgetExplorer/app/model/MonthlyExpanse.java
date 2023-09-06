@@ -13,7 +13,7 @@ import java.time.Year;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("monthExpanses")
+@Document(collection = "monthExpanses")
 public class MonthlyExpanse {
     @Id
     private Integer mid;
