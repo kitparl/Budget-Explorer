@@ -1,34 +1,28 @@
 package com.budgetExplorer.app.model;
 
-import com.budgetExplorer.app.enums.Month;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
-import java.time.Year;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Document(collection = "monthExpanses")
 public class MonthlyExpanse {
     @Id
-    private Integer mid;
-    private Year year;
-
-    private Month month;
-
+    private Integer id;
+    private String year;
+    private String month;
     private Integer budget;
-
     private Integer investmentAmount;
-
     private Integer savingAmount;
-
     private Integer totalExpanseThisMonth;
-
-     private OtherExpanse otherExpanse;
+    @JsonIgnore
+    private List<OtherExpanse> otherExpanse;
+    //OtherExpanse instead of Integer
 
 }

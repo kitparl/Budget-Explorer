@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://parley:parley@budget-explorer.2ubpkie.mongodb.net/?retryWrites=true&w=majority
+      database : budgetExplorerDB
