@@ -5,8 +5,7 @@ import {RouterModule} from '@angular/router';
 import { MonthsRoute } from './month.routing';
 import { MonthComponent } from './month/month.component';
 import { AddExpanseComponent } from './add-expanse/add-expanse.component'
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -14,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 RouterModule.forChild(MonthsRoute),
     FormsModule,
     ReactiveFormsModule,
+    NgbTooltipModule
   ],
   declarations: [
     MonthComponent,
