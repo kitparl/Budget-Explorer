@@ -1,0 +1,122 @@
+<div>
+    <ng-container>
+        <!-- Use ng-template as the popup -->
+        <ng-template #popupContent>
+          <div class="popup">
+    
+            <h2>April</h2>
+            <!--  -->
+            <main>
+                <div class="d-flex justify-content-around align-items-center">
+                    <ul
+                    class="list-group list-group-flush" style="box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px; width: 50%;">
+                    <li
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Month
+                            Budget</span><b>₹12345</b>
+                    </li>
+                    <li
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Month
+                        Investment</span><b>₹1545</b>
+                </li>
+                    <li
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Month Savings</span>
+                        <b>₹1235</b>
+                    </li>
+                    <li
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Month
+                            Expanse</span><b>₹1245</b>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="mt-4 d-flex justify-content-around align-items-center" style="width: 100%;">
+                <form style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; width: 25%; border-radius: 2%;" class="d-grid justify-content-around align-items-center mt-4">
+                    <div class="form-group mt-2">
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Month Budget">
+                    </div>
+                    <div class="form-group mt-2">
+                      <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Investment Amount">
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Saving Amount">
+                      </div>
+                    <div>
+                        <button style="margin-bottom: 6px;">Set</button>
+                    </div>
+                  </form>
+            </div>
+    
+            <!-- other expanse portion -->
+            <div class="mt-4 d-flex justify-content-around align-items-center" style="border: 1px solid black;">
+              <div>
+                <label class="mt-2" for="" >Other Expanse</label>
+            <form class="mt-2 text-center d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-end align-items-center">
+                <div class="row mt-4 d-flex justify-content-end align-items-center" style="width: 75%;">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Expanse">
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control" placeholder="Amount">
+                  </div>
+                  </div>
+                  <div class="col mt-2 d-flex justify-content-start align-items-center" style="width: 25%;">
+                    <button class="btn btn-success">
+                      <i class="bi bi-plus-circle-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+    
+            <div class="mt-4">
+                <main>
+                    <h1>Expanse List</h1>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Expanse</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor=""> -->
+                <tr>
+                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                <th scope="row">1</th>
+                <td>
+                    <img
+                        [src]=""
+                        class="me-2"
+                        style="width: 20px"
+                    />
+                    India
+                </td>
+                <td>2400</td>
+            </tr>
+        </tbody>
+    </table>
+    
+                </main>
+            </div>
+    
+            </main>
+            <button (click)="closePopup()">Close</button>
+            <button>Submit</button>
+          </div>
+        </ng-template>
+      
+        <!-- Render the popup content using ngTemplateOutlet -->
+        <ng-container *ngTemplateOutlet="popupContent">
+            asdf
+        </ng-container>
+      </ng-container>
+    </div>
+    
