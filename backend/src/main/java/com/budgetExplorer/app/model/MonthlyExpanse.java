@@ -1,9 +1,9 @@
 package com.budgetExplorer.app.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 
 @Getter
@@ -21,8 +21,6 @@ public class MonthlyExpanse {
     private Integer investmentAmount;
     private Integer savingAmount;
     private Integer totalExpanseThisMonth;
-    @JsonIgnore
+    private String monthCode;
     private List<OtherExpanse> otherExpanse;
-    //OtherExpanse instead of Integer
-
 }

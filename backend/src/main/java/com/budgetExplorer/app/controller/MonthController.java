@@ -31,45 +31,46 @@ public class MonthController {
 
     //create monthly expanse
     @PostMapping("/saveExpanse")
-    public ResponseEntity<Output> createMonthlyExpanseHandler(@RequestBody MonthlyExpanse monthlyExpanse) throws MonthException {
-        Output output = monthService.saveMonthlyExpanse(monthlyExpanse);
+    public ResponseEntity<Output> createMonthlyExpanseHandler(@RequestHeader("YEAR") String yearHeader,@RequestHeader("MONTH") String monthHeader, @RequestBody MonthlyExpanse monthlyExpanse) throws MonthException {
+        Output output = monthService.saveMonthlyExpanse(monthlyExpanse, monthHeader, yearHeader);
         return new ResponseEntity<>(output, HttpStatus.CREATED);
     }
 
     //get All monthly Expanse
-    @GetMapping("/get")
-    public ResponseEntity<List<MonthlyExpanse>> getMonthlyExpanseListHandler() throws MonthException{
-        List<MonthlyExpanse> list = monthService.getMonthlyExpanseList();
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    // get month list
+
+
+    @GetMapping("/getMonthExpanse/{monthCode}")
+    public ResponseEntity<List<MonthlyExpanse>> getMonthlyExpanseByMonthCodeHandler(@PathVariable String monthCode) throws MonthException{
+        List<MonthlyExpanse> monthlyExpanse = monthService.getExpanseItemByMonth(monthCode);
+        return new ResponseEntity<>(monthlyExpanse, HttpStatus.OK);
     }
 
     //delete All Monthly Expanse
     @DeleteMapping("/delete")
-    public ResponseEntity<Output> deleteAllMonthlyExpanseHandler() throws MonthException{
-        Output output = monthService.deleteAllMonthlyExpanse();
+    public ResponseEntity<Output> deleteAllMonthlyExpanseHandler(@RequestHeader("YEAR") String yearHeader,@RequestHeader("MONTH") String monthHeader) throws MonthException{
+        Output output = monthService.deleteAllMonthlyExpanseItem(monthHeader, yearHeader);
         return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
     }
 
     //update Monthly Expanse
-
     @PutMapping("/editExpanse/{id}")
-    public ResponseEntity<Output> updateMonthlyExpanseHandler(@PathVariable("id") Integer id) throws MonthException{
-        Output output = monthService.updateMonthlyExpanse(id);
+    public ResponseEntity<Output> updateMonthlyExpanseHandler(@RequestHeader("YEAR") String yearHeader,@RequestHeader("MONTH") String monthHeader, @PathVariable("id") Integer id, @RequestBody  MonthlyExpanse monthlyExpanse) throws MonthException{
+        Output output = monthService.updateMonthlyExpanse(id, monthHeader, yearHeader,monthlyExpanse);
         return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
     }
 
 //    get Total Month ExpanseData Card
     @GetMapping("/totalExpanseThisMonth")
-    public ResponseEntity<MonthDTO> getTotalMonthExpanseHandler() throws MonthException{
-        MonthDTO monthlyExpanse = monthService.getTotalMonthExpanseData();
+    public ResponseEntity<MonthDTO> getTotalMonthExpanseHandler(@RequestHeader("YEAR") String yearHeader,@RequestHeader("MONTH") String monthHeader) throws MonthException{
+        MonthDTO monthlyExpanse = monthService.getTotalMonthExpanseData(monthHeader, yearHeader);
         return new ResponseEntity<>(monthlyExpanse, HttpStatus.OK);
     }
 
 //    deleteMonthExpanseById
-//    @DeleteMapping(value = "{/delete/{monthYear}/{id}")
-//    public ResponseEntity<Output> deleteMonthExpanseByIdHandler(@PathVariable("id") Integer id,
-//                                                                @PathVariable("monthYear") String monthYear) throws MonthException{
-//        Output output = monthService.deleteMonthExpanseById(id, monthYear);
-//        return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
-//    }
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Output> deleteMonthExpanseByIdHandler(@PathVariable("id") Integer id, @RequestHeader("YEAR") String yearHeader,@RequestHeader("MONTH") String monthHeader) throws MonthException{
+        Output output = monthService.deleteMonthExpanseItemById(id, monthHeader, yearHeader);
+        return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
+    }
 }

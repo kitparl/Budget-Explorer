@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 @RestController
 public class ConnectionController {
-
     @Autowired
     private MongoTemplate mongoTemplate;
 
