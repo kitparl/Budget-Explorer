@@ -1,3 +1,5 @@
+//check pranshu
+
 import {
     OTHERS, CUSTOMER_LOAN_APPLICATION_PATH,
     CUSTOMER_TERMS_CONDITIONS_PATH
@@ -69,11 +71,6 @@ import { buffToBase64 } from '../../../../server/common/library/helper/common';
 import { PaymentGateway } from '../../../common/library/helper/paymentGateways/paymentGateway';
 
 
-interface Notes {
-    loanApplicationId: Number,
-    loanId: Number,
-    paymentType: Number
-}
 
 interface Entity {
     id: string,
@@ -3886,9 +3883,7 @@ export class Controller {
                     loan.save({ transaction: oTransactionHandler.transaction })
                 ]);
                 message = LOAN_CLOSER_REJECTED;
-            } else if (closeLoanState) {
-                loan.subStatus = null;
-                loan.status = closureType === "CLOSE" ? "closed" : "cancelled";
+            } 
                 loan.closeCancelRemarks = req.body.comments.remark ? req.body.comments.remark : loan.closeCancelRemarks;
                 loan.closedAt = closeLoanState.actionDate || new Date();
 
@@ -5834,10 +5829,7 @@ export class Controller {
                 if (loan.LoanEmis && loan.LoanEmis.length > 0) {
                     loan.status = getLoanStatus(loan);
                     promises.push(getTotalAmountPaid(loan).then(totalEmiAmountPaid => {
-                        const numberOfEmiDue = getNumberOfEmiDue(loan, totalEmiAmountPaid);
-                        const numberOfEmiPaid = loan.LoanEmis.length - numberOfEmiDue,
-                            lastEmiPaymentDate = getLastEmiPaymentDate(loan);
-                        return {
+                        const numberOfEmiDue = getNumberOfEmiDue(loan, t
                             id: `${loan.id}${totalEmiAmountPaid.tentativePayment ? '*' : ''}`,
                             loanNumber: loan.loanNumber,
                             numberOfEmiDue,
