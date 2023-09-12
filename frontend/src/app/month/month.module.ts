@@ -6,6 +6,9 @@ import { MonthsRoute } from './month.routing';
 import { MonthComponent } from './month/month.component';
 import { AddExpanseComponent } from './add-expanse/add-expanse.component'
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -13,7 +16,10 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 RouterModule.forChild(MonthsRoute),
     FormsModule,
     ReactiveFormsModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    MatButtonModule, 
+    MatDividerModule, 
+    MatIconModule
   ],
   declarations: [
     MonthComponent,

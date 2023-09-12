@@ -7,7 +7,7 @@ import { Component} from '@angular/core';
 })
 export class MonthComponent {
   public isPopupOpen: boolean = false;
-  togglePopup() {
+  addExpanse() {
     this.isPopupOpen = !this.isPopupOpen;
   }
 }

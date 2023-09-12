@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isHomeComponent">
   <ng-container>
     <!-- Use ng-template as the popup -->
     <ng-template #popupContent>
@@ -103,7 +103,7 @@
                           </path>
                         </svg>
                       </button>
-                      <!-- </button> -->
+                      
                     </div>
                   </div>
 
@@ -123,6 +123,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Expanse</th>
                     <th scope="col">Amount</th>
+                    <th scope="col">Delete/Edit</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -136,6 +138,16 @@
                       India
                     </td>
                     <td>2400</td>
+                    <td> 
+                      <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                      <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                      <mat-icon>delete</mat-icon>
+                    </button> -->
+                    <button mat-icon-button disabled aria-label="Edit">
+                      <mat-icon>open_in_new</mat-icon>
+                    </button></td>
                   </tr>
                 </tbody>
               </table>
@@ -147,7 +159,7 @@
 
         <div class="d-flex justify-content-center align-items-center mt-4">
           <div style="width: 30%; margin-top: 5%; margin-bottom: 5%; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;" class="d-flex justify-content-around align-items-center"> 
-          <button class="icon-button" (click)="closePopup()"
+          <button class="icon-button" (click)="goHome()"
             type="button" ngbTooltip="Close go back"
             [openDelay]="200" [closeDelay]="300"
             style="width: 50px !important;"><img width="40"
@@ -172,3 +184,4 @@
     </ng-container>
   </ng-container>
 </div>
+<app-month *ngIf="isHomeComponent"></app-month>
