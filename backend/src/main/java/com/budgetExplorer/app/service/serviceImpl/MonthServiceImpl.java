@@ -43,7 +43,6 @@ public class MonthServiceImpl implements MonthService {
 
             throw new MonthException("This Month Expanse already exists");
         } else {
-            monthlyExpanse.setId(month +"-"+ year);
             if (monthlyExpanse.getBudget() != null) {
                 Optional<YearlyExpanse> yearOpt = yearDao.findById(Integer.valueOf(year));
                 Optional<AllTimeExpanse> allTimeOpt = allTimeDao.findById(allTimeExpanseId);
