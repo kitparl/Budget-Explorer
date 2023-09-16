@@ -9,11 +9,12 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Document(collection = "monthExpanses")
 public class MonthlyExpanse {
     @Id
-    private Integer id;
+    private String id;
     private Integer year;
     private String month;
     private Integer budget;
@@ -23,7 +24,4 @@ public class MonthlyExpanse {
     private String monthCode;
     private List<OtherExpanse> otherExpanse;
 
-    public MonthlyExpanse() {
-        this.budget = 0;
-    }
 }
