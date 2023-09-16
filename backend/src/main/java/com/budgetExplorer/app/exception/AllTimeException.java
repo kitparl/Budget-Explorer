@@ -1,6 +1,6 @@
 package com.budgetExplorer.app.exception;
 
-public class AllTimeException extends Exception{
+public class AllTimeException extends Exception {
 
     public AllTimeException() {
     }

@@ -12,6 +12,5 @@ import lombok.Setter;
 public class OtherExpanse {
     private Integer id;
     private String expanseType;
-    private Integer amount;
-
+    private Integer amount ;
 }

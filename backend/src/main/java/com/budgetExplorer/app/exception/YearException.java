@@ -1,6 +1,6 @@
 package com.budgetExplorer.app.exception;
 
-public class YearException extends Exception{
+public class YearException extends Exception {
     public YearException() {
     }
 

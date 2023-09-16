@@ -1,30 +1,31 @@
 package com.budgetExplorer.app.controller;
 
+import com.budgetExplorer.app.dto.Output;
+import com.budgetExplorer.app.exception.AllTimeException;
 import com.budgetExplorer.app.exception.MonthException;
-import com.budgetExplorer.app.model.MonthlyExpanse;
-import com.budgetExplorer.app.service.MonthService;
+import com.budgetExplorer.app.model.AllTimeExpanse;
+import com.budgetExplorer.app.service.AllTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/all")
+@RequestMapping("/api/allTime")
 public class AllTimeController {
-
     @Autowired
-    private MonthService monthService;
+    private AllTimeService allTimeService;
 
-    @GetMapping("/getList")
-    public ResponseEntity<List<MonthlyExpanse>> getMonthlyExpanseListHandler(@RequestHeader("YEAR") String yearHeader, @RequestHeader("MONTH") String monthHeader) throws MonthException {
-        List<MonthlyExpanse> list = monthService.getMonthlyExpanseList(monthHeader, yearHeader);
-        System.out.println(yearHeader);
-        System.out.println(monthHeader);
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    @GetMapping("/getExpanse")
+    public ResponseEntity<AllTimeExpanse> getTotalMonthExpanseHandler() throws AllTimeException {
+        AllTimeExpanse allTimeExpanse = allTimeService.getAllTimeExpanseData();
+        return new ResponseEntity<>(allTimeExpanse, HttpStatus.OK);
+    }
+
+    @PostMapping("/saveExpanse")
+    public ResponseEntity<Output> createYearlyExpanseHandler(@RequestBody AllTimeExpanse allTimeExpanse) throws MonthException {
+        Output output = allTimeService.saveAllTimeExpanse(allTimeExpanse);
+        return new ResponseEntity<>(output, HttpStatus.CREATED);
     }
 }

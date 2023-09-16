@@ -8,7 +8,8 @@ public class MyErrorBean {
     private String message;
     private String details;
 
-    public MyErrorBean() {}
+    public MyErrorBean() {
+    }
 
     public MyErrorBean(LocalDateTime timestamp, String message, String details) {
         super();
