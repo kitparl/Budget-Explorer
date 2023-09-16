@@ -13,13 +13,13 @@ public interface MonthService {
 
     List<MonthlyExpanse> getMonthlyExpanseList(String month, Integer year) throws MonthException;
 
-    Output deleteAllMonthlyExpanseItem(String month, Integer year) throws MonthException;
+    Output deleteAllMonthlyOtherExpanseItem(String id) throws MonthException;
 
-    Output updateMonthlyExpanse(Integer id, String month, Integer year, Integer oldInvestmentAmount, Integer oldTotalExpanseThisMonth, Integer oldSavingAmount, MonthlyExpanse monthlyExpanse) throws MonthException, AllTimeException;
+    Output updateMonthlyExpanse(String id, String month, Integer year, Integer oldInvestmentAmount, Integer oldTotalExpanseThisMonth, Integer oldSavingAmount, MonthlyExpanse monthlyExpanse) throws MonthException, AllTimeException;
 
-    List<MonthlyExpanse> getExpanseItemByMonth(String monthCode) throws MonthException;
+    MonthlyExpanse getExpanseItemByMonth(String monthCode) throws MonthException;
 
     MonthDTO getTotalMonthExpanseData(String month, Integer year) throws MonthException;
 
-    Output deleteMonthExpanseItemById(Integer id, String month, Integer year) throws MonthException;
+    Output deleteMonthExpanseItemById(String id, String month, Integer year) throws MonthException;
 }

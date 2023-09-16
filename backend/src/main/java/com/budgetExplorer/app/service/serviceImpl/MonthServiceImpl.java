@@ -43,7 +43,7 @@ public class MonthServiceImpl implements MonthService {
 
             throw new MonthException("This Month Expanse already exists");
         } else {
-            monthlyExpanse.setMonthCode(month + year);
+            monthlyExpanse.setId(month + year);
             if (monthlyExpanse.getBudget() != null) {
                 Optional<YearlyExpanse> yearOpt = yearDao.findById(Integer.valueOf(year));
                 Optional<AllTimeExpanse> allTimeOpt = allTimeDao.findById(allTimeExpanseId);
@@ -112,27 +112,26 @@ public class MonthServiceImpl implements MonthService {
     }
 
     @Override
-    public Output deleteAllMonthlyExpanseItem(String month, Integer year) throws MonthException {
+    public Output deleteAllMonthlyOtherExpanseItem(String id) throws MonthException {
 
-        List<MonthlyExpanse> list = monthDao.findByMonthCode(month + year);
-        Output output = new Output();
+        Optional<MonthlyExpanse> opt = monthDao.findById(id);
+        if(!opt.isPresent()){
 
-        if (list.isEmpty()) {
-            throw new MonthException("No Expanses found");
-        } else {
-            monthDao.deleteAll(list);
-
-            output.setMessage("Expanse Deleted Successfully");
-            output.setTimestamp(LocalDateTime.now());
+        }else{
+            opt.get().setOtherExpanse(null);
         }
+
+        Output output = new Output();
+        output.setTimestamp(LocalDateTime.now());
+        output.setMessage("Deleted Successfully");
 
         return output;
     }
 
     @Override
-    public Output updateMonthlyExpanse(Integer id, String month, Integer year, Integer oldInvestmentAmount, Integer oldTotalExpanseThisMonth, Integer oldSavingAmount, MonthlyExpanse monthlyExpanse) throws MonthException, AllTimeException {
+    public Output updateMonthlyExpanse(String id, String month, Integer year, Integer oldInvestmentAmount, Integer oldTotalExpanseThisMonth, Integer oldSavingAmount, MonthlyExpanse monthlyExpanse) throws MonthException, AllTimeException {
 
-        Optional<MonthlyExpanse> monthlyExpanseOpt = monthDao.findByIdAndMonthCode(id, month + Integer.toString(year));
+        Optional<MonthlyExpanse> monthlyExpanseOpt = monthDao.findById(id);
         Optional<YearlyExpanse> yearlyExpanseOpt = yearDao.findById(year);
         Optional<AllTimeExpanse> allTimeExpanseOpt = allTimeDao.findById(allTimeExpanseId);
 
@@ -244,13 +243,13 @@ public class MonthServiceImpl implements MonthService {
 
 
     @Override
-    public List<MonthlyExpanse> getExpanseItemByMonth(String monthCode) throws MonthException {
-        List<MonthlyExpanse> monthlyExpanses = monthDao.findByMonthCode(monthCode);
+    public MonthlyExpanse getExpanseItemByMonth(String id) throws MonthException {
+        Optional<MonthlyExpanse> opt = monthDao.findById(id);
 
-        if (monthlyExpanses.isEmpty()) {
-            throw new MonthException("No MonthlyExpanses found");
+        if(!opt.isPresent()){
+            throw new MonthException("Empty Data");
         }
-        return monthlyExpanses;
+        return opt.get();
     }
 
 
@@ -260,9 +259,9 @@ public class MonthServiceImpl implements MonthService {
     }
 
     @Override
-    public Output deleteMonthExpanseItemById(Integer id, String month, Integer year) throws MonthException {
+    public Output deleteMonthExpanseItemById(String id, String month, Integer year) throws MonthException {
 
-        Optional<MonthlyExpanse> opt = monthDao.findByIdAndMonthCode(id, month + year);
+        Optional<MonthlyExpanse> opt = monthDao.findById(id);
         Output output = new Output();
 
         if (opt != null) {

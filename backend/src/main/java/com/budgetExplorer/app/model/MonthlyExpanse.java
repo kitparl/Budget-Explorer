@@ -21,7 +21,5 @@ public class MonthlyExpanse {
     private Integer investmentAmount;
     private Integer savingAmount;
     private Integer totalExpanseThisMonth;
-    private String monthCode;
     private List<OtherExpanse> otherExpanse;
-
 }
