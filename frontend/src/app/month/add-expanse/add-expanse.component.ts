@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-expanse',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AddExpanseComponent {
   isHomeComponent = false;
+  
+  constructor(private router: Router) { }
+
 
   goHome() {
     this.isHomeComponent = !this.isHomeComponent;
+    // this.router.navigate([''])
+    
   }
 }
