@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/month")
@@ -28,7 +28,6 @@ public class MonthController {
     }
 
     //get All monthly Expanse
-    // get month list
 
     @GetMapping("/getExpanse/{id}")
     public ResponseEntity<MonthlyExpanse> getMonthlyExpanseByMonthCodeHandler(@PathVariable String id) throws MonthException {
@@ -57,10 +56,17 @@ public class MonthController {
         return new ResponseEntity<>(monthlyExpanse, HttpStatus.OK);
     }
 
-    //    deleteMonthExpanseById
+    //    delete Month Expanse By Id
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Output> deleteMonthExpanseByIdHandler(@PathVariable("id") String id, @RequestHeader("YEAR") String yearHeader, @RequestHeader("MONTH") String monthHeader) throws MonthException {
         Output output = monthService.deleteMonthExpanseItemById(id, monthHeader, Integer.valueOf(yearHeader));
         return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
+    }
+
+    //all data month expanse list
+    @GetMapping("/all/{year}")
+    public ResponseEntity<List<MonthlyExpanse>> allMonthExpanseListIdHandler(@PathVariable String year) throws MonthException {
+        List<MonthlyExpanse> list = monthService.getAllMonthListByYear(Integer.valueOf(year));
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

@@ -287,6 +287,16 @@ public class MonthServiceImpl implements MonthService {
         }
     }
 
+    @Override
+    public List<MonthlyExpanse> getAllMonthListByYear(Integer year) throws MonthException {
+        List<MonthlyExpanse> list = monthDao.findByYear(year);
+        if(list.isEmpty()){
+        throw new MonthException("No Month Data Found");
+        }else{
+            return list;
+        }
+    }
+
     private void setZeroDefaultMonthModelField(MonthlyExpanse expanse) {
         if (expanse.getBudget() == null) {
             expanse.setBudget(0);
