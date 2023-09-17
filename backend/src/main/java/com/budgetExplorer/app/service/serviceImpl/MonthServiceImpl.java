@@ -37,59 +37,67 @@ public class MonthServiceImpl implements MonthService {
     @Override
     public Output saveMonthlyExpanse(MonthlyExpanse monthlyExpanse, String month, Integer year) throws MonthException {
 
-
         Optional<MonthlyExpanse> opt = monthDao.findById(monthlyExpanse.getId());
         if (opt.isPresent()) {
-
             throw new MonthException("This Month Expanse already exists");
         } else {
             if (monthlyExpanse.getBudget() != null) {
                 Optional<YearlyExpanse> yearOpt = yearDao.findById(Integer.valueOf(year));
                 Optional<AllTimeExpanse> allTimeOpt = allTimeDao.findById(allTimeExpanseId);
-                if (!yearOpt.isPresent() || !allTimeOpt.isPresent()) {
+                if (!yearOpt.isPresent()) {
+                    YearlyExpanse yearlyExpanse = new YearlyExpanse(year, 0, 0, 0, 0);
+                    yearDao.save(yearlyExpanse);
+                }
+                if (!allTimeOpt.isPresent()) {
+                    AllTimeExpanse allTimeExpanse = new AllTimeExpanse(allTimeExpanseId, 0, 0, 0, 0);
+                    allTimeDao.save(allTimeExpanse);
+                }
 
-                } else {
-                    MonthlyExpanse expanse = opt.get();
                     YearlyExpanse yearlyExpanse = yearOpt.get();
                     AllTimeExpanse allTimeExpanse = allTimeOpt.get();
-                    setZeroDefaultMonthModelField(expanse);
                     setZeroDefaultYearModelField(yearlyExpanse);
                     setZeroDefaultAllTimeModelField(allTimeExpanse);
 
                     if (monthlyExpanse.getSavingAmount() != null) {
                         Integer totalAddYearAmount = yearlyExpanse.getTotalSavingThisYear() + monthlyExpanse.getSavingAmount();
                         yearlyExpanse.setTotalSavingThisYear(totalAddYearAmount);
+                        System.out.println("totalAddYearAmount" + totalAddYearAmount);
 
                         Integer totalAddAllTimeAmount = allTimeExpanse.getTotalSavingTillNow() + monthlyExpanse.getSavingAmount();
                         allTimeExpanse.setTotalSavingTillNow(totalAddAllTimeAmount);
+                        System.out.println("totalAddAllTimeAmount" + totalAddAllTimeAmount);
                     }
                     if (monthlyExpanse.getInvestmentAmount() != null) {
                         Integer totalAddYearAmount = yearlyExpanse.getTotalInvestmentThisYear() + monthlyExpanse.getInvestmentAmount();
                         yearlyExpanse.setTotalInvestmentThisYear(totalAddYearAmount);
+                        System.out.println("totalAddYearAmount" + totalAddYearAmount);
 
                         Integer totalAddAllTimeAmount = allTimeExpanse.getTotalInvestmentTillNow() + monthlyExpanse.getInvestmentAmount();
                         allTimeExpanse.setTotalInvestmentTillNow(totalAddAllTimeAmount);
+                        System.out.println("totalAddAllTimeAmount" + totalAddAllTimeAmount);
                     }
                     if (monthlyExpanse.getBudget() != null) {
                         Integer totalAddYearAmount = yearlyExpanse.getTotalBudget() + monthlyExpanse.getBudget();
                         yearlyExpanse.setTotalBudget(totalAddYearAmount);
+                        System.out.println("totalAddYearAmount" + totalAddYearAmount);
 
                         Integer totalAddAllTimeAmount = allTimeExpanse.getTotalBudgetTillNow() + monthlyExpanse.getBudget();
                         allTimeExpanse.setTotalBudgetTillNow(totalAddAllTimeAmount);
+                        System.out.println("totalAddAllTimeAmount" + totalAddAllTimeAmount);
                     }
                     if (monthlyExpanse.getTotalExpanseThisMonth() != null) {
                         Integer totalAddYearAmount = yearlyExpanse.getTotalExpanse() + monthlyExpanse.getTotalExpanseThisMonth();
-                        yearlyExpanse.setTotalBudget(totalAddYearAmount);
+                        yearlyExpanse.setTotalExpanse(totalAddYearAmount);
+                        System.out.println("totalAddYearAmount" + totalAddYearAmount);
 
                         Integer totalAddAllTimeAmount = allTimeExpanse.getTotalExpanseTillNow() + monthlyExpanse.getTotalExpanseThisMonth();
                         allTimeExpanse.setTotalExpanseTillNow(totalAddAllTimeAmount);
+                        System.out.println("totalAddAllTimeAmount" + totalAddAllTimeAmount);
                     }
                     allTimeDao.save(allTimeExpanse);
                     yearDao.save(yearlyExpanse);
                 }
             }
-        }
-
 
         monthDao.save(monthlyExpanse);
 
@@ -114,9 +122,9 @@ public class MonthServiceImpl implements MonthService {
     public Output deleteAllMonthlyOtherExpanseItem(String id) throws MonthException {
 
         Optional<MonthlyExpanse> opt = monthDao.findById(id);
-        if(!opt.isPresent()){
+        if (!opt.isPresent()) {
 
-        }else{
+        } else {
             opt.get().setOtherExpanse(null);
         }
 
@@ -245,7 +253,7 @@ public class MonthServiceImpl implements MonthService {
     public MonthlyExpanse getExpanseItemByMonth(String id) throws MonthException {
         Optional<MonthlyExpanse> opt = monthDao.findById(id);
 
-        if(!opt.isPresent()){
+        if (!opt.isPresent()) {
             throw new MonthException("Empty Data");
         }
         return opt.get();
