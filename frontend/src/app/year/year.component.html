@@ -3,10 +3,10 @@
         Year <em>(2023)</em>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Budget</span><b>₹12345</b></li>
-        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Savings</span> <b>₹1235</b>
+        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Budget</span><b>₹{{ yearData?.totalBudget }}</b></li>
+        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Savings</span> <b>₹{{ yearData?.totalSavingThisYear }}</b>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Expanse</span><b>₹1245</b></li>
-        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Investment</span><b>₹1545</b></li>
+        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Expanse</span><b>₹{{ yearData?.totalExpanse }}</b></li>
+        <li class="list-group-item d-flex justify-content-between align-items-center"><span>Year Investment</span><b>₹{{ yearData?.totalInvestmentThisYear }}</b></li>
     </ul>
 </div>

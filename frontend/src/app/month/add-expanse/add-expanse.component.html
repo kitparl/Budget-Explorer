@@ -4,7 +4,7 @@
     <ng-template #popupContent>
       <div class="popup">
 
-        <h1 class="text-center mt-4 mb-4">April</h1>
+        <h1 class="text-center mt-4 mb-4">{{ monthData?.month }}</h1>
         <!--  -->
         <main>
           <div
@@ -14,22 +14,22 @@
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Budget</span><b>₹12345</b>
+                  Budget</span><b>₹{{monthData?.budget}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Investment</span><b>₹1545</b>
+                  Investment</span><b>₹{{monthData?.investmentAmount}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month Savings</span>
-                <b>₹1235</b>
+                <b>₹{{monthData?.savingAmount}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Expanse</span><b>₹1245</b>
+                  Expanse</span><b>₹{{monthData?.totalExpanseThisMonth}}</b>
               </li>
             </ul>
           </div>
@@ -37,27 +37,27 @@
           <div
             class="mt-4 d-flex justify-content-around align-items-center"
             style="width: 100%;">
-            <form
+            <form name="setBasics" (ngSubmit)="onSubmit($event)" [formGroup]="form1"
               style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; width: 25%; border-radius: 2%;"
-              class="d-grid justify-content-around align-items-center mt-4">
+              class="d-grid justify-content-around align-items-center mt-4" >
               <h1 class="mt-4">Set Month Budget</h1>
               <div class="form-group mt-2">
                 <input type="number" class="form-control"
                   id="formGroupExampleInput"
-                  placeholder="Month Budget">
+                  placeholder="Month Budget" formControlName="budget">
               </div>
               <div class="form-group mt-2">
                 <input type="number" class="form-control"
                   id="formGroupExampleInput2"
-                  placeholder="Investment Amount">
+                  placeholder="Investment Amount" formControlName="investment">
               </div>
               <div class="form-group mt-2">
                 <input type="number" class="form-control"
                   id="formGroupExampleInput2"
-                  placeholder="Saving Amount">
+                  placeholder="Saving Amount" formControlName="saving">
               </div>
               <div class="text-center mt-2">
-                <button class="icon-button"
+                <button class="icon-button" type="submit"
                   style="margin-bottom: 6px;"><img
                     width="32" height="32"
                     src="https://img.icons8.com/dusk/64/000000/checked-2--v1.png"
@@ -73,7 +73,7 @@
               style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;">
               <h1 class="mt-2 text-center">Other Expanse
               </h1>
-              <form
+              <form name="otherExpanse" [formGroup]="form2" (ngSubmit)="onSubmit($event)"
                 class="text-center d-flex justify-content-center align-items-center">
                 <div
                   class="d-flex justify-content-center align-items-center">
@@ -83,12 +83,13 @@
                     <div class="col">
                       <input type="text"
                         class="form-control"
-                        placeholder="Expanse">
+                        placeholder="Expanse" formControlName="expanse">
                     </div>
                     <div class="col">
                       <input type="number"
                         class="form-control"
-                        placeholder="Amount">
+                        placeholder="Amount" formControlName="amount">
+                        
                     </div>
                     <div class="col">
                       <button class="icon-button"

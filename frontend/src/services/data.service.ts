@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'https://budget-explorer.onrender.com/api';
 
   constructor(private http: HttpClient) { }
 
@@ -14,28 +14,26 @@ export class DataService {
     const headers = new HttpHeaders()
       .set('YEAR', yearHeader)
       .set('MONTH', monthHeader);
-    return this.http.post(`${this.apiUrl}/month/saveExpanse`, data, { headers });
+    return this.http.post(`${environment.api_url}/month/saveExpanse`, data, { headers });
   };
 
   getExpanseById(id: number): Observable<any> {
-    const url = `${this.apiUrl}/month/getExpanse/${id}`;
+    const url = `${environment.api_url}/month/getExpanse/${id}`;
     return this.http.get(url);
   }
 
-  getExpanseByYear(yearHeader: string): Observable<any> {
-    const url = `/api/year/getExpanse`;
-    const headers = new HttpHeaders()
-      .set('YEAR', yearHeader)
-    return this.http.get(url, { headers });
+  getExpanseByYear(year: string): Observable<any> {
+    const url = `${environment.api_url}/year/getExpanse/${year}`;
+    return this.http.get(url);
   }
 
   deleteExpanseById(id: number): Observable<any> {
-    const url = `/api/allOther/delete/${id}`;
+    const url = `${environment.api_url}/allOther/delete/${id}`;
     return this.http.delete(url);
   }
 
   updateExpanseById(id: number, yearHeader: string, monthHeader: string, updatedData: any): Observable<any> {
-    const url = `/api/editExpanse/${id}`;
+    const url = `${environment.api_url}/editExpanse/${id}`;
     const headers = new HttpHeaders()
       .set('YEAR', yearHeader)
       .set('MONTH', monthHeader);
@@ -43,7 +41,7 @@ export class DataService {
   }
 
   deleteExpanseByMonthId(id: number, monthHeader: string, yearHeader: string): Observable<any> {
-    const url = `/api/delete/${id}`;
+    const url = `${environment.api_url}/delete/${id}`;
     const headers = new HttpHeaders()
       .set('YEAR', yearHeader)
       .set('MONTH', monthHeader);
@@ -51,17 +49,21 @@ export class DataService {
   }
 
   getAllTimeExpanse(): Observable<any> {
-    const url = '/api/allTime/getExpanse';
+    const url = `${environment.api_url}/allTime/getExpanse`;
     return this.http.get(url);
   }
 
   saveExpanseForYear(expanseData: any): Observable<any> {
-    const url = `/api/year/saveExpanse`;
+    const url = `${environment.api_url}/year/saveExpanse`;
     return this.http.post(url, expanseData);
   }
 
   saveExpanseForAllTime(expanseData: any): Observable<any> {
-    const url = `/api/allTime/saveExpanse`;
+    const url = `${environment.api_url}/allTime/saveExpanse`;
     return this.http.post(url, expanseData);
+  }
+
+  getAllMonthListByYear(year: string): Observable<any> {
+    return this.http.get(`${environment.api_url}/month/all/${year}`);
   }
 }

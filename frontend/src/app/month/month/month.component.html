@@ -7,7 +7,7 @@
                 <div class="child-item mx-auto">
                     <!-- Content for column 1 -->
                     <!-- Jan -->
-                    <div class="card mt-4 enlarge-div" (click)="addExpanse()"
+                    <div class="card mt-4 enlarge-div" (click)="addExpanse(getObjectByMonth('JANUARY'))"
                         style="width: 18rem; cursor: pointer;">
                         <img class="card-img-top"
                             src="../../assets/images/months/jan.jpg"
@@ -20,29 +20,29 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("JANUARY")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("JANUARY")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("JANUARY")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("JANUARY")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- april -->
-                    <div class="card mt-4 enlarge-div" (click)="addExpanse()"
+                    <div class="card mt-4 enlarge-div" (click)="addExpanse(getObjectByMonth('APRIL'))"
                         style="width: 18rem; cursor: pointer;">
                         <img class="card-img-top"
                             src="../../assets/images/months/april.jpg"
@@ -55,29 +55,31 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("APRIL")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("APRIL")?.savingAmount }}
+                                </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>
+                                        {{ getObjectByMonth("APRIL")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("APRIL")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- July -->
-                    <div class="card mt-4 enlarge-div" (click)="addExpanse()"
+                    <div class="card mt-4 enlarge-div" (click)="addExpanse(getObjectByMonth('JULY'))"
                         style="width: 18rem; cursor: pointer;">
                         <img class="card-img-top"
                             src="../../assets/images/months/july.jpg"
@@ -90,29 +92,29 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("JULY")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("JULY")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("JULY")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("JULY")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Oct -->
-                    <div class="card mt-4 enlarge-div" (click)="addExpanse()"
+                    <div class="card mt-4 enlarge-div" (click)="addExpanse(getObjectByMonth('OCTOBER'))"
                         style="width: 18rem; cursor: pointer;">
                         <img class="card-img-top"
                             src="../../assets/images/months/oct.jpg"
@@ -125,23 +127,25 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("OCTOBER")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("OCTOBER")?.savingAmount }}
+                                </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>
+                                        {{ getObjectByMonth("OCTOBER")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("OCTOBER")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
@@ -150,7 +154,7 @@
                 <div class="child-item mx-auto">
                     <!-- Content for column 2 -->
                     <!-- Feb -->
-                    <div class="card mt-4 enlarge-div" (click)="addExpanse()"
+                    <div class="card mt-4 enlarge-div" (click)="addExpanse(getObjectByMonth('FEBRUARY'))"
                         style="width: 18rem; cursor: pointer;">
                         <img class="card-img-top"
                             src="../../assets/images/months/feb.jpg"
@@ -163,30 +167,31 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("FEBRUARY")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("FEBRUARY")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("FEBRUARY")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>
+                                        {{ getObjectByMonth("FEBRUARY")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- may -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('MAY'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/may.jpg"
                             alt="Card image cap">
@@ -198,30 +203,30 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("MAY")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("MAY")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("MAY")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("MAY")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Aug -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('AUGUST'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/aug.jpg"
                             alt="Card image cap">
@@ -233,30 +238,31 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("AUGUST")?.budget }}
+                                    </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("AUGUST")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("AUGUST")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("AUGUST")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- nov -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('NOVEMBER'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/nov.jpg"
                             alt="Card image cap">
@@ -268,23 +274,23 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("NOVEMBER")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("NOVEMBER")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("NOVEMBER")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("NOVEMBER")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
@@ -295,7 +301,7 @@
                     <!-- Content for column 3 -->
                     <!-- march -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('MARCH'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/mar.jpg"
                             alt="Card image cap">
@@ -307,30 +313,34 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("MARCH")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("MARCH")?.savingAmount }}
+                                </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>
+                                        {{ getObjectByMonth("MARCH")?.totalExpanseThisMonth }}
+                                        </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>
+                                        {{ getObjectByMonth("MARCH")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- June -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('JUNE'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/jun.jpg"
                             alt="Card image cap">
@@ -342,30 +352,30 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("JUNE")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("JUNE")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("JUNE")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("JUNE")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Sept -->
                     <div class="card mt-4 enlarge-div"
-                        style="width: 18rem; cursor: pointer;" (click)="addExpanse()">
+                        style="width: 18rem; cursor: pointer;" (click)="addExpanse(getObjectByMonth('SEPTEMBER'))">
                         <img class="card-img-top"
                             src="../../assets/images/months/sept.jpg"
                             alt="Card image cap">
@@ -377,23 +387,24 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("SEPTEMBER")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("SEPTEMBER")?.savingAmount }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("SEPTEMBER")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>
+                                        {{ getObjectByMonth("SEPTEMBER")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
@@ -401,7 +412,7 @@
                     <!-- Dec -->
                     <div class="card mt-4 enlarge-div"
                         style="width: 18rem; cursor: pointer;"
-                        (click)="addExpanse()">
+                        (click)="addExpanse(getObjectByMonth('DECEMBER'))">
                         <img class="card-img-top"
                             src="h../../assets/images/months/dec.jpg"
                             alt="Card image cap">
@@ -413,23 +424,24 @@
                             class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Budget</span><b>₹12345</b>
+                                <span>Month
+                                    Budget</span><b>{{ getObjectByMonth("DECEMBER")?.budget }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year Savings</span>
-                                <b>₹1235</b>
+                                <span>Month Savings</span>
+                                <b>{{ getObjectByMonth("DECEMBER")?.savingAmount }}
+                                </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Expanse</span><b>₹1245</b>
+                                <span>Month
+                                    Expanse</span><b>{{ getObjectByMonth("DECEMBER")?.totalExpanseThisMonth }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Year
-                                    Investment</span><b>₹1545</b>
+                                <span>Month
+                                    Investment</span><b>{{ getObjectByMonth("DECEMBER")?.investmentAmount }}</b>
                             </li>
                         </ul>
                     </div>
@@ -438,4 +450,4 @@
         </div>
     </div>
 </div>
-<app-add-expanse *ngIf="isPopupOpen"></app-add-expanse>
+<router-outlet></router-outlet>

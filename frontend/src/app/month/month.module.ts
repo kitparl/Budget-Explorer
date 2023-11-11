@@ -9,17 +9,18 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { HomeResolver } from 'src/resolvers/HomeResolver';
 
 @NgModule({
   imports: [
     CommonModule,
-RouterModule.forChild(MonthsRoute),
     FormsModule,
     ReactiveFormsModule,
     NgbTooltipModule,
     MatButtonModule, 
     MatDividerModule, 
-    MatIconModule
+    MatIconModule,
+    RouterModule.forRoot(MonthsRoute)
   ],
   declarations: [
     MonthComponent,
@@ -27,9 +28,10 @@ RouterModule.forChild(MonthsRoute),
   ],
   exports: [
     MonthComponent,
-    AddExpanseComponent
+    AddExpanseComponent,
+    RouterModule
   ],
-  providers: [],
+  // providers: [HomeResolver],
 })
 export class MonthModule {
 }
