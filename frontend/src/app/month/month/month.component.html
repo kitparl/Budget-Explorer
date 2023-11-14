@@ -425,23 +425,23 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Month
-                                    Budget</span><b>{{ getObjectByMonth("DECEMBER")?.budget }}</b>
+                                    Budget</span><b>{{ getObjectByMonth("DECEMBER")?.budget || 'NA' }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Month Savings</span>
-                                <b>{{ getObjectByMonth("DECEMBER")?.savingAmount }}
+                                <b>{{ getObjectByMonth("DECEMBER")?.savingAmount || 'NA' }}
                                 </b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Month
-                                    Expanse</span><b>{{ getObjectByMonth("DECEMBER")?.totalExpanseThisMonth }}</b>
+                                    Expanse</span><b>{{ getObjectByMonth("DECEMBER")?.totalExpanseThisMonth || 'NA' }}</b>
                             </li>
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Month
-                                    Investment</span><b>{{ getObjectByMonth("DECEMBER")?.investmentAmount }}</b>
+                                    Investment</span><b>{{ getObjectByMonth("DECEMBER")?.investmentAmount  || 'NA' }}</b>
                             </li>
                         </ul>
                     </div>

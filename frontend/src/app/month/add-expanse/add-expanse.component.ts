@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { SharedDataService } from 'src/services/shared-data.service';
+import { StorageBrowser } from '../../../storage/storage.browser';
 
 @Component({
   selector: 'app-add-expanse',
@@ -13,32 +15,36 @@ export class AddExpanseComponent implements OnInit{
   isHomeComponent = false;
   form1: FormGroup;
   form2: FormGroup;
+  public dataSource = new BehaviorSubject<any>(null);
 
   
-  constructor(private router: Router, private sharedDataService: SharedDataService, private formBuilder: FormBuilder) { 
+  constructor(private router: Router, private sharedDataService: SharedDataService, private formBuilder: FormBuilder, private storageBrowser: StorageBrowser) { 
+    this.form1 = this.formBuilder.group({
+      budget: new FormControl(),
+      investment: new FormControl(),
+      saving: new FormControl()
+    });
+    this.form2 = this.formBuilder.group({
+      expanse: new FormControl(''),
+      amount: new FormControl(''),
+
+    });
   }
 
 
   goHome() {
     this.isHomeComponent = !this.isHomeComponent;
     this.router.navigate(['month'])
-    
+    const storedPopupState = sessionStorage.clear();
+  
   }
 
   ngOnInit(): void {
-    this.form1 = this.formBuilder.group({
-      budget: new FormControl(),
-      investment: new FormControl(),
-      saving: new FormControl()
-    });
-    this.form1 = this.formBuilder.group({
-      expanse: new FormControl(''),
-      amount: new FormControl('')
-    });
-    this.sharedDataService.dataEmitter.subscribe((data) => {
-      this.monthData = data;
-      console.log('[ add-componet-recived-month--data ] >', data);
-    });
+        // Subscribe to dataEmitter in SharedDataService
+        this.sharedDataService.dataEmitter.subscribe((data) => {
+        this.storageBrowser.set('monthData', data);
+        });
+    sessionStorage.setItem('isPopupOpen', JSON.stringify(true));
   }
 
 
@@ -49,7 +55,8 @@ export class AddExpanseComponent implements OnInit{
     if (formName === 'setBasics') {
 
       const formValues = this.form1.value;
-      console.log('[ 1 ] >', formValues)
+      console.log('[ 1 ] >', formValues);
+
 
 
     } else if (formName === 'otherExpanse') {

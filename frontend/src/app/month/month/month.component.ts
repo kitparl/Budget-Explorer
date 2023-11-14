@@ -20,11 +20,11 @@ export class MonthComponent implements OnInit{
   }
   
   addExpanse(month: {}) {
-    console.log(month, "month");
     // this.addExpanseComponent.receivedData = month;
     this.isPopupOpen = !this.isPopupOpen;
     this.sharedDataService.sendData(month);
 
+    sessionStorage.setItem('isPopupOpen', JSON.stringify(this.isPopupOpen));
     this.router.navigate(['/month', month['month'], month['year']])
   }
 
@@ -37,8 +37,14 @@ export class MonthComponent implements OnInit{
       this.monthData = data;
       this.allMonthDataDisplayInCard(data)
       console.log('[ this.monthData ] >', this.monthData)
-      
     })
+
+    // const storedPopupState = sessionStorage.getItem('isPopupOpen');
+    // if (storedPopupState) {
+    //   this.isPopupOpen = JSON.parse(storedPopupState);
+    // }
+    // const storedPopupState = sessionStorage.clear();
+  
     
   }
   allMonthDataDisplayInCard(data: any){

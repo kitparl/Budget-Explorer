@@ -4,7 +4,7 @@
     <ng-template #popupContent>
       <div class="popup">
 
-        <h1 class="text-center mt-4 mb-4">{{ monthData?.month }}</h1>
+        <h1 class="text-center mt-4 mb-4">{{ monthData?.month  || 'NA'}}</h1>
         <!--  -->
         <main>
           <div
@@ -14,22 +14,22 @@
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Budget</span><b>₹{{monthData?.budget}}</b>
+                  Budget</span><b>₹{{monthData?.budget  || 'NA'}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Investment</span><b>₹{{monthData?.investmentAmount}}</b>
+                  Investment</span><b>₹{{monthData?.investmentAmount  || 'NA'}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month Savings</span>
-                <b>₹{{monthData?.savingAmount}}</b>
+                <b>₹{{monthData?.savingAmount || 'NA'}}</b>
               </li>
               <li
                 class="list-group-item d-flex justify-content-between align-items-center">
                 <span>Month
-                  Expanse</span><b>₹{{monthData?.totalExpanseThisMonth}}</b>
+                  Expanse</span><b>₹{{monthData?.totalExpanseThisMonth  || 'NA'}}</b>
               </li>
             </ul>
           </div>
@@ -228,4 +228,4 @@
     </ng-container>
   </ng-container>
 </div>
-<app-month *ngIf="isHomeComponent"></app-month>
+<!-- <app-month *ngIf="isHomeComponent"></app-month> -->

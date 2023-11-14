@@ -13,7 +13,7 @@ export const MonthsRoute: Routes = [
   },
 children: [
   { path: 'addexpanse', 
-  component: AddExpanseComponent   
+  component: AddExpanseComponent
 },
 ]},
 // {

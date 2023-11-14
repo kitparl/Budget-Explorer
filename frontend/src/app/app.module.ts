@@ -11,6 +11,7 @@ import { MonthModule } from './month/month.module';
 import { HomeResolver } from 'src/resolvers/HomeResolver';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app/app-routing.module'
+import { StorageBrowser } from 'src/storage/storage.browser';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { routes } from '../app/app-routing.module'
     HttpClientModule
   ],
   // providers: [HomeResolver],
+  providers: [StorageBrowser],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
