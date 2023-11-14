@@ -38,32 +38,59 @@
             class="mt-4 d-flex justify-content-around align-items-center"
             style="width: 100%;">
             <form name="setBasics" (ngSubmit)="onSubmit($event)" [formGroup]="form1"
-              style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; width: 25%; border-radius: 2%;"
-              class="d-grid justify-content-around align-items-center mt-4" >
-              <h1 class="mt-4">Set Month Budget</h1>
-              <div class="form-group mt-2">
-                <input type="number" class="form-control"
-                  id="formGroupExampleInput"
-                  placeholder="Month Budget" formControlName="budget">
+            style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; width: 25%; border-radius: 2%;"
+            class="d-grid justify-content-around align-items-center mt-4">
+            <h1 class="mt-4">Set Month Budget</h1>
+          
+            <!-- Month Budget Input -->
+            <div class="form-group mt-2">
+              <input type="number" class="form-control"
+                id="formGroupExampleInput"
+                placeholder="Month Budget" formControlName="budget"
+                [ngClass]="{'has-value': form1.get('budget').value !== null && form1.get('budget').value !== ''}">
+              <!-- Display error message if budget is not a positive number -->
+              <div *ngIf="form1.get('budget').hasError('pattern') && form1.get('budget').touched" class="text-danger">
+                Budget must be a positive number.
               </div>
-              <div class="form-group mt-2">
-                <input type="number" class="form-control"
-                  id="formGroupExampleInput2"
-                  placeholder="Investment Amount" formControlName="investment">
+            </div>
+          
+            <!-- Investment Amount Input -->
+            <div class="form-group mt-2">
+              <input type="number" class="form-control"
+                id="formGroupExampleInput2"
+                placeholder="Investment Amount" formControlName="investment"
+                [ngClass]="{'has-value': form1.get('investment').value !== null && form1.get('investment').value !== ''}">
+              <!-- Display error message if investment is not a positive number -->
+              <div *ngIf="form1.get('investment').hasError('pattern') && form1.get('investment').touched" class="text-danger">
+                Investment must be a positive number.
               </div>
-              <div class="form-group mt-2">
-                <input type="number" class="form-control"
-                  id="formGroupExampleInput2"
-                  placeholder="Saving Amount" formControlName="saving">
+              <div *ngIf="form1.get('investment').hasError('investmentExceedsBudget')" class="text-danger">
+                Investment cannot exceed 30% of the budget.
               </div>
-              <div class="text-center mt-2">
-                <button class="icon-button" type="submit"
-                  style="margin-bottom: 6px;"><img
-                    width="32" height="32"
-                    src="https://img.icons8.com/dusk/64/000000/checked-2--v1.png"
-                    alt="checked-2--v1" /></button>
+            </div>
+          
+            <!-- Saving Amount Input -->
+            <div class="form-group mt-2">
+              <input type="number" class="form-control"
+                id="formGroupExampleInput3"
+                placeholder="Saving Amount" formControlName="saving"
+                [ngClass]="{'has-value': form1.get('saving').value !== null && form1.get('saving').value !== ''}">
+              <!-- Display error message if saving is not a positive number -->
+              <div *ngIf="form1.get('saving').hasError('pattern') && form1.get('saving').touched" class="text-danger">
+                Saving must be a positive number.
               </div>
-            </form>
+              <div *ngIf="form1.get('saving').hasError('savingExceedsBudget')" class="text-danger">
+                Saving cannot exceed 70% of the budget.
+              </div>
+            </div>
+          
+            <div class="text-center mt-2">
+              <button class="icon-button" type="submit" style="margin-bottom: 6px;" [disabled]="!form1.valid">
+                <img width="32" height="32" src="https://img.icons8.com/dusk/64/000000/checked-2--v1.png" alt="checked-2--v1" />
+              </button>
+            </div>
+          </form>          
+          
           </div>
 
           <!-- other expanse portion -->

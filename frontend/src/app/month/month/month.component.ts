@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { MonthExpanses } from 'src/models/MonthExpanses';
 import { AddExpanseComponent } from '../add-expanse/add-expanse.component';
 import { SharedDataService } from 'src/services/shared-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-month',
@@ -16,14 +17,22 @@ export class MonthComponent implements OnInit{
   public isPopupOpen: boolean = false;
   public monthData: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private dataservice: DataService, private sharedDataService: SharedDataService) {
+  constructor(private router: Router, private route: ActivatedRoute, private dataservice: DataService, private sharedDataService: SharedDataService, private toastrService: ToastrService) {
   }
   
   addExpanse(month: {}) {
     // this.addExpanseComponent.receivedData = month;
     this.isPopupOpen = !this.isPopupOpen;
-    this.sharedDataService.sendData(month);
 
+    console.log("before toaster");
+    
+    if(!this.checkMonthDataValidorNot(month)){
+      this.toastrService.error('Expenses Data Not Matched', 'Error Log', {
+        timeOut: 3000,
+    })
+    
+  }
+    this.sharedDataService.sendData(month);
     sessionStorage.setItem('isPopupOpen', JSON.stringify(this.isPopupOpen));
     this.router.navigate(['/month', month['month'], month['year']])
   }
@@ -55,7 +64,24 @@ export class MonthComponent implements OnInit{
    getObjectByMonth(month: string) {
     try{
       return this.monthData.find((obj) => obj.month == month);
-    }catch(e){}
+    }catch{}
+}
+  checkMonthDataValidorNot(month: any) {
+    let res = true;
+    if(month.otherExpanse.length > 0) {
+      let sumExpanse = 0;
+      for(const expense of month.otherExpanse){
+        sumExpanse += expense.amount;
+      }
+      console.log("sumExpanse", sumExpanse);
+      console.log("month.totalExpanseThisMonth", month.totalExpanseThisMonth);
+      
+      
+      if(month.totalExpanseThisMonth !== sumExpanse){
+        res = false;
+      }
+    }
+    return res;
   }
 }
 

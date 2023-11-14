@@ -12,6 +12,7 @@ import { HomeResolver } from 'src/resolvers/HomeResolver';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app/app-routing.module'
 import { StorageBrowser } from 'src/storage/storage.browser';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,12 @@ import { StorageBrowser } from 'src/storage/storage.browser';
     
   ],
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     MonthModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
   ],
   // providers: [HomeResolver],
   providers: [StorageBrowser],

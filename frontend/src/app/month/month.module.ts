@@ -10,6 +10,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeResolver } from 'src/resolvers/HomeResolver';
+import { BudgetCalculate } from '../../utilites/budgetCalculate';
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,7 @@ import { HomeResolver } from 'src/resolvers/HomeResolver';
     MatButtonModule, 
     MatDividerModule, 
     MatIconModule,
-    RouterModule.forRoot(MonthsRoute)
+    RouterModule.forRoot(MonthsRoute),
   ],
   declarations: [
     MonthComponent,
@@ -31,7 +33,7 @@ import { HomeResolver } from 'src/resolvers/HomeResolver';
     AddExpanseComponent,
     RouterModule
   ],
-  // providers: [HomeResolver],
+  providers: [BudgetCalculate],
 })
 export class MonthModule {
 }
