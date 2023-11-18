@@ -21,7 +21,7 @@ public interface MonthService {
 
     MonthDTO getTotalMonthExpanseData(String month, Integer year) throws MonthException;
 
-    Output deleteMonthExpanseItemById(String id, String month, Integer year) throws MonthException;
+    Output deleteMonthExpanseItemById(Integer id, String month, Integer year) throws MonthException;
 
     List<MonthlyExpanse> getAllMonthListByYear(Integer year) throws MonthException;
 }

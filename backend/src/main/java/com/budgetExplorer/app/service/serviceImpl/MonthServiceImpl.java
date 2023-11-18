@@ -9,6 +9,7 @@ import com.budgetExplorer.app.exception.AllTimeException;
 import com.budgetExplorer.app.exception.MonthException;
 import com.budgetExplorer.app.model.AllTimeExpanse;
 import com.budgetExplorer.app.model.MonthlyExpanse;
+import com.budgetExplorer.app.model.OtherExpanse;
 import com.budgetExplorer.app.model.YearlyExpanse;
 import com.budgetExplorer.app.service.MonthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -266,24 +267,24 @@ public class MonthServiceImpl implements MonthService {
     }
 
     @Override
-    public Output deleteMonthExpanseItemById(String id, String month, Integer year) throws MonthException {
+    public Output deleteMonthExpanseItemById(Integer id, String month, Integer year) throws MonthException {
 
-        Optional<MonthlyExpanse> opt = monthDao.findById(id);
+        MonthlyExpanse monthlyExpanse = monthDao.findByYearAndMonth(year, month);
         Output output = new Output();
 
-        if (opt != null) {
+        if (monthlyExpanse != null) {
 
-            MonthlyExpanse monthlyExpanse = opt.get();
-
-            monthDao.delete(monthlyExpanse);
-
+            List<OtherExpanse> otherExpanseList = monthlyExpanse.getOtherExpanse();
+            otherExpanseList.removeIf(expense -> (expense.getId()).equals(id));
+            monthlyExpanse.setOtherExpanse(otherExpanseList);
+            monthDao.save(monthlyExpanse);
             output.setMessage("Expanse Deleted Successfully");
             output.setTimestamp(LocalDateTime.now());
 
             return output;
 
         } else {
-            throw new MonthException("Exception does not exist");
+            throw new MonthException("Item does not exist");
         }
     }
 

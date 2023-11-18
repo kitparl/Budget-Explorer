@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface MonthDao extends MongoRepository<MonthlyExpanse, String> {
     List<MonthlyExpanse> findByYear(Integer year);
+    MonthlyExpanse findByYearAndMonth(Integer year, String month);
 }

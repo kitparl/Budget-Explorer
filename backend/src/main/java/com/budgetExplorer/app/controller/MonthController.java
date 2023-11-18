@@ -58,7 +58,7 @@ public class MonthController {
 
     //    delete Month Expanse By Id
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Output> deleteMonthExpanseByIdHandler(@PathVariable("id") String id, @RequestHeader("YEAR") String yearHeader, @RequestHeader("MONTH") String monthHeader) throws MonthException {
+    public ResponseEntity<Output> deleteMonthExpanseByIdHandler(@PathVariable("id") Integer id, @RequestHeader("YEAR") String yearHeader, @RequestHeader("MONTH") String monthHeader) throws MonthException {
         Output output = monthService.deleteMonthExpanseItemById(id, monthHeader, Integer.valueOf(yearHeader));
         return new ResponseEntity<>(output, HttpStatus.ACCEPTED);
     }
